@@ -1,0 +1,114 @@
+{
+  "name": "buildmylogic-vscode",
+  "displayName": "BuildMyLogic",
+  "description": "Connects VS Code to BuildMyLogic learning sessions, capturing challenge evidence, test results, diagnostics, attempts, hints, and submissions.",
+  "version": "0.2.0",
+  "publisher": "buildmylogic",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other",
+    "Education"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onUri"
+  ],
+  "main": "./extension.js",
+  "extensionKind": [
+    "workspace"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "buildmylogic.startSession",
+        "title": "BuildMyLogic: Start Session"
+      },
+      {
+        "command": "buildmylogic.stopSession",
+        "title": "BuildMyLogic: Stop Session"
+      },
+      {
+        "command": "buildmylogic.runTests",
+        "title": "BuildMyLogic: Run Tests"
+      },
+      {
+        "command": "buildmylogic.askVibe",
+        "title": "BuildMyLogic: Ask Vibe for a Hint"
+      },
+      {
+        "command": "buildmylogic.submit",
+        "title": "BuildMyLogic: Submit Solution"
+      },
+      {
+        "command": "buildmylogic.sendContext",
+        "title": "BuildMyLogic: Send Current Context"
+      },
+      {
+        "command": "buildmylogic.openDashboard",
+        "title": "BuildMyLogic: Open Dashboard"
+      },
+      {
+        "command": "buildmylogic.status",
+        "title": "BuildMyLogic: Session Status"
+      }
+    ],
+    "configuration": {
+      "title": "BuildMyLogic",
+      "properties": {
+        "buildmylogic.serverUrl": {
+          "type": "string",
+          "default": "http://localhost:3000",
+          "description": "BuildMyLogic web/backend URL. Keep Sarvam credentials on the backend."
+        },
+        "buildmylogic.eventsPath": {
+          "type": "string",
+          "default": "/api/sessions/{sessionId}/events",
+          "description": "Backend event endpoint. {sessionId} is replaced automatically."
+        },
+        "buildmylogic.contextPath": {
+          "type": "string",
+          "default": "/api/vscode/context",
+          "description": "Backend endpoint for one-off VS Code context uploads."
+        },
+        "buildmylogic.token": {
+          "type": "string",
+          "default": "",
+          "description": "Optional pairing token. Never put a Sarvam API key here."
+        },
+        "buildmylogic.testCommand": {
+          "type": "string",
+          "default": "pytest -q",
+          "description": "Command used by BuildMyLogic: Run Tests. It is executed only when the learner explicitly invokes the command."
+        },
+        "buildmylogic.testTimeoutMs": {
+          "type": "number",
+          "default": 120000,
+          "description": "Maximum test execution time in milliseconds."
+        },
+        "buildmylogic.maxFileBytes": {
+          "type": "number",
+          "default": 200000,
+          "description": "Maximum active-file content sent to the backend."
+        },
+        "buildmylogic.maxOutputBytes": {
+          "type": "number",
+          "default": 40000,
+          "description": "Maximum test/terminal output sent to the backend."
+        },
+        "buildmylogic.sendDiagnostics": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include VS Code Problems/diagnostics in session events."
+        },
+        "buildmylogic.enableTerminalEvidence": {
+          "type": "boolean",
+          "default": false,
+          "description": "Capture supported terminal shell-integration metadata. Disabled by default; use Run Tests for deterministic evidence."
+        }
+      }
+    }
+  }
+}
