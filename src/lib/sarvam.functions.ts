@@ -17,9 +17,7 @@ function key(): string {
   // entry (src/server.ts) bridges env.SARVAM_API_KEY into process.env.
   const value = process.env["SARVAM_API_KEY"]?.trim();
   if (!value) {
-    throw new Error(
-      "SARVAM_API_KEY is not set. Add it to your local .env file, or add SARVAM_API_KEY as a server secret in your Lovable/Cloudflare deployment.",
-    );
+    throw new Error("Some error found.");
   }
   return value;
 }
