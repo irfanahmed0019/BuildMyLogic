@@ -127,15 +127,15 @@ export const C_CURRICULUM_MAP: Record<CConceptId, CurriculumStep> = {
     title: "5 · Sum (+)",
     shortName: "Sum (+)",
     concept: "Adding two numbers in C",
-    initialQuestion: "Here is how you add two numbers in C:
+    initialQuestion: `Here is how you add two numbers in C:
 
-```c
+\`\`\`c
 int a = 5;
 int b = 3;
 int sum = a + b;
-```
+\`\`\`
 
-Do you understand how the `+` works? (Say yes to continue)",
+Do you understand how the \`+\` works? (Say yes to continue)`,
     expectedKeywords: ["yes", "yeah", "yup", "ok", "understood"],
     teachingExplanation: "In C, the `+` operator adds two numbers together: `int sum = a + b;`.",
     cCodeSnippet: `int a = 5;\nint b = 3;\nint sum = a + b; // 8`,
