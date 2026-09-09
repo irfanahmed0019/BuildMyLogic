@@ -5,11 +5,7 @@ export type CConceptId =
   | "print_name"
   | "variables"
   | "input"
-  | "sum"
-  | "difference"
-  | "multiplication"
-  | "division"
-  | "modulus"
+  | "basic_math"
   | "if"
   | "else"
   | "comparison"
@@ -21,11 +17,7 @@ export const C_FUNDAMENTALS: CConceptId[] = [
   "print_name",
   "variables",
   "input",
-  "sum",
-  "difference",
-  "multiplication",
-  "division",
-  "modulus",
+  "basic_math",
   "if",
   "else",
   "comparison",
@@ -121,95 +113,30 @@ export const C_CURRICULUM_MAP: Record<CConceptId, CurriculumStep> = {
       { question: "What format code reads a whole number in scanf: %d or %s?", expectedKeywords: ["%d"] },
     ],
   },
-  sum: {
-    id: "sum",
+  basic_math: {
+    id: "basic_math",
     stepNumber: 5,
-    title: "5 · Sum (+)",
-    shortName: "Sum (+)",
-    concept: "Adding two numbers in C",
-    initialQuestion: `Here is how you add two numbers in C:
+    title: "5 · Basic Math (+, -, *, /)",
+    shortName: "Basic Math",
+    concept: "Math operations in C",
+    initialQuestion: `Here is the full code to add two numbers in C:
 
 \`\`\`c
-int a = 5;
-int b = 3;
+int a = 10;
+int b = 5;
 int sum = a + b;
 \`\`\`
 
-Do you understand how the \`+\` works? (Say yes to continue)`,
-    expectedKeywords: ["yes", "yeah", "yup", "ok", "understood"],
-    teachingExplanation: "In C, the `+` operator adds two numbers together: `int sum = a + b;`.",
-    cCodeSnippet: `int a = 5;\nint b = 3;\nint sum = a + b; // 8`,
+Are you ready to write code for subtraction and division? (Say yes to continue)`,
+    expectedKeywords: ["yes", "yeah", "yup", "ok", "ready", "aahn", "athe"],
+    teachingExplanation: "In C, you can use + (add), - (subtract), * (multiply), and / (divide) to perform calculations.",
+    cCodeSnippet: `int a = 10;
+int b = 5;
+int sum = a + b;`,
     drills: [
-      { question: "What is 12 + 6?", expectedKeywords: ["18"], expectedMathAnswer: 18 },
-      { question: "What is 9 + 7?", expectedKeywords: ["16"], expectedMathAnswer: 16 },
-      { question: "What is 15 + 8?", expectedKeywords: ["23"], expectedMathAnswer: 23 },
-    ],
-  },
-  difference: {
-    id: "difference",
-    stepNumber: 6,
-    title: "6 · Difference (-)",
-    shortName: "Difference (-)",
-    concept: "Subtracting two numbers in C",
-    initialQuestion: "Now that you saw addition, how would you write the C code to subtract `b` from `a`? (Hint: use `-`)",
-    expectedKeywords: ["a - b", "a-b"],
-    teachingExplanation: "In C, the `-` operator subtracts the second number from the first: `int diff = a - b;`.",
-    cCodeSnippet: `int a = 12;\nint b = 4;\nint diff = a - b; // 8`,
-    drills: [
-      { question: "What is 15 - 7?", expectedKeywords: ["8"], expectedMathAnswer: 8 },
-      { question: "What is 20 - 9?", expectedKeywords: ["11"], expectedMathAnswer: 11 },
-      { question: "What is 14 - 6?", expectedKeywords: ["8"], expectedMathAnswer: 8 },
-    ],
-  },
-  multiplication: {
-    id: "multiplication",
-    stepNumber: 7,
-    title: "7 · Multiplication (*)",
-    shortName: "Multiplication (*)",
-    concept: "Multiplying numbers in C with *",
-    initialQuestion: "What is `4 * 5` in C? (Hint: use `*`)",
-    expectedKeywords: ["20", "twenty", "result = 20"],
-    expectedMathAnswer: 20,
-    teachingExplanation: "In C, we use `*` (asterisk) to multiply numbers: `int result = a * b;`.",
-    cCodeSnippet: `int a = 4;\nint b = 5;\nint result = a * b; // 20`,
-    drills: [
-      { question: "What is 6 * 3?", expectedKeywords: ["18"], expectedMathAnswer: 18 },
-      { question: "What is 7 * 2?", expectedKeywords: ["14"], expectedMathAnswer: 14 },
-      { question: "What is 8 * 4?", expectedKeywords: ["32"], expectedMathAnswer: 32 },
-    ],
-  },
-  division: {
-    id: "division",
-    stepNumber: 8,
-    title: "8 · Division (/)",
-    shortName: "Division (/)",
-    concept: "Dividing numbers in C with /",
-    initialQuestion: "What is `20 / 4` in C? (Hint: use `/`)",
-    expectedKeywords: ["5", "five", "result = 5"],
-    expectedMathAnswer: 5,
-    teachingExplanation: "In C, `/` (forward slash) divides numbers: `int result = a / b;`.",
-    cCodeSnippet: `int a = 20;\nint b = 4;\nint result = a / b; // 5`,
-    drills: [
-      { question: "What is 15 / 3?", expectedKeywords: ["5"], expectedMathAnswer: 5 },
-      { question: "What is 18 / 2?", expectedKeywords: ["9"], expectedMathAnswer: 9 },
-      { question: "What is 30 / 5?", expectedKeywords: ["6"], expectedMathAnswer: 6 },
-    ],
-  },
-  modulus: {
-    id: "modulus",
-    stepNumber: 9,
-    title: "9 · Modulus (%)",
-    shortName: "Modulus (%)",
-    concept: "Getting the remainder of division with %",
-    initialQuestion: "What is `10 % 3` in C? (Hint: use `%`)",
-    expectedKeywords: ["1", "one", "rem = 1", "remainder 1"],
-    expectedMathAnswer: 1,
-    teachingExplanation: "In C, `%` (modulus) divides two numbers and gives you the remainder left over. 3 goes into 10 three times (9), so 1 is left over: `10 % 3 = 1`.",
-    cCodeSnippet: `int rem = 10 % 3; // 1`,
-    drills: [
-      { question: "What is 7 % 2?", expectedKeywords: ["1"], expectedMathAnswer: 1 },
-      { question: "What is 14 % 4?", expectedKeywords: ["2"], expectedMathAnswer: 2 },
-      { question: "What is 20 % 5?", expectedKeywords: ["0", "zero"], expectedMathAnswer: 0 },
+      { question: "Write the C code to subtract `b` from `a` and store it in `diff`. (Hint: use `-`)", expectedKeywords: ["a - b", "a-b", "a - b;"] },
+      { question: "Write the C code to multiply `a` and `b`. (Hint: use `*`)", expectedKeywords: ["a * b", "a*b", "a * b;"] },
+      { question: "Write the C code to divide `a` by `b`. (Hint: use `/`)", expectedKeywords: ["a / b", "a/b", "a / b;"] },
     ],
   },
   if: {

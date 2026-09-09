@@ -18,7 +18,7 @@ export type LessonState =
   | "difference"
   | "multiplication"
   | "division"
-  | "modulus"
+  | "basic_math"
   | "if"
   | "else"
   | "comparison"
@@ -268,7 +268,7 @@ export function advanceCBeginner(
   // 1. Pedagogy request: user asked to give question first with hint, teach if don't know, then 3 drill questions with no hints
   if (curriculumIntent === "PEDAGOGY_REQUEST") {
     const { conceptId } = parseDrillState(state);
-    const activeConcept = conceptId in C_CURRICULUM_MAP ? conceptId : "modulus";
+    const activeConcept = conceptId in C_CURRICULUM_MAP ? conceptId : "basic_math";
     const step = C_CURRICULUM_MAP[activeConcept];
     return {
       message: `You got it! Exactly how we'll do it from now on:\n1. Question first with only a tiny operator hint.\n2. If you don't know, I'll teach you.\n3. Then 3 practice questions with **no hints**!\n\n**${step.title}**\n${step.initialQuestion}`,
@@ -298,7 +298,7 @@ export function advanceCBeginner(
 
   // 5. Evaluate answer deterministically
   const { conceptId, drillIndex } = parseDrillState(state);
-  const activeConcept: CConceptId = conceptId in C_CURRICULUM_MAP ? conceptId : "modulus";
+  const activeConcept: CConceptId = conceptId in C_CURRICULUM_MAP ? conceptId : "basic_math";
   const step = C_CURRICULUM_MAP[activeConcept];
 
   const evalRes = evaluateCurriculumAnswer(activeConcept, answer, drillIndex);
