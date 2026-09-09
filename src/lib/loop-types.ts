@@ -260,20 +260,14 @@ export const defaultStarterPlan: Plan = {
 };
 
 export const emptyState: LoopState = {
-  onboarded: true,
-  profile: defaultStarterProfile,
-  plan: defaultStarterPlan,
-  missionProgress: {
-    "cli-calculator": { status: "active", completedSteps: [] },
-    "memory-inspector": { status: "locked", completedSteps: [] },
-    "file-data-parser": { status: "locked", completedSteps: [] },
-  },
-  activity: [
-    { at: Date.now(), text: "Welcome to BuildMyLogic! Starter build path initialized.", kind: "ai" }
-  ],
+  onboarded: false,
+  profile: null,
+  plan: null,
+  missionProgress: {},
+  activity: [],
   sessions: [],
   learningChats: {},
-  selectedLearningMissionId: "cli-calculator",
+  selectedLearningMissionId: null,
   skillMemory: {},
 };
 

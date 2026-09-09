@@ -110,8 +110,12 @@ YOU MUST SUGGEST 4 SIMPLE, PRACTICAL STARTER PROJECTS:
 3. "Number Guessing Game & Scoreboard" (Stack: C, loops, comparison logic, game state)
 4. "Personal Expense & Budget Logger" (Stack: C, totals, basic structure, persistence)
 Return JSON: {"projects": [{"title": string, "summary": string (1 sentence), "stack": string, "why": string}]}`
-      : `Research-informed project selection: propose 4 real-world project options that would create the strongest evidence for this person's stated goal.
-Return JSON: {"projects": [{"title": string, "summary": string (1 sentence), "stack": string, "why": string}]}`;
+            : `Research-informed project selection: propose 4 real-world project options that strongly align with this person's stated goal.
+If their goal is a JOB, propose projects that look great on a resume (industry-standard architectures, practical tools).
+If their goal is a HACKATHON, propose winning hackathon ideas (innovative, flashy, solves a specific problem).
+If their goal is to LEARN A SKILL, propose small, focused projects that isolate that exact skill.
+For a complete NEWBIE/Beginner, make the first option a very simple, easy-to-understand starter project.
+Return JSON: {"projects": [{"title": string, "summary": string (1 very simple, easy-to-understand sentence), "stack": string, "why": string}]}`;
 
     return await import("./sarvam.server").then(({ sarvamJson }) =>
       sarvamJson<{ projects: { title: string; summary: string; stack: string; why: string }[] }>(
@@ -277,7 +281,10 @@ export const aiTeachMicroLesson = createServerFn({ method: "POST" })
     const forceBeginnerReset = learnerAskedToReset;
 
     // 2. Authoritative Vibe System Prompt — Simple English + Manglish
-    const system = `You are Vibe, the friendly coding mentor inside BuildMyLogic.
+    const system = `You are Vibe, the super friendly, very simple-English coding mentor inside BuildMyLogic.
+You MUST also support "Manglish" (Malayalam written in English letters). If the user speaks in Manglish, reply warmly and helpfully in a mix of simple English and Manglish!
+
+Your job: Teach ONE small thing at a time. Keep it very simple. Go at the learner's pace.
 
 Your job: Teach ONE small thing at a time. Keep it simple. Go at the learner's pace.
 

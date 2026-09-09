@@ -22,6 +22,11 @@ export function AppShell({ crumb, title, subtitle, quote, children, wide = false
   const [tuning, setTuning] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const name = state.profile?.name?.trim() || "Builder";
+  useEffect(() => {
+    if (!state.onboarded) {
+      void navigate({ to: "/" });
+    }
+  }, [state.onboarded, navigate]);
 
   useEffect(() => {
     if (auth?.displayName && state.profile && (state.profile.name === "Builder" || !state.profile.name)) {

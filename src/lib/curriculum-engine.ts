@@ -127,9 +127,16 @@ export const C_CURRICULUM_MAP: Record<CConceptId, CurriculumStep> = {
     title: "5 · Sum (+)",
     shortName: "Sum (+)",
     concept: "Adding two numbers in C",
-    initialQuestion: "What is `5 + 3` in C? (Hint: use `+`)",
-    expectedKeywords: ["8", "eight", "sum = 8", "sum is 8"],
-    expectedMathAnswer: 8,
+    initialQuestion: "Here is how you add two numbers in C:
+
+```c
+int a = 5;
+int b = 3;
+int sum = a + b;
+```
+
+Do you understand how the `+` works? (Say yes to continue)",
+    expectedKeywords: ["yes", "yeah", "yup", "ok", "understood"],
     teachingExplanation: "In C, the `+` operator adds two numbers together: `int sum = a + b;`.",
     cCodeSnippet: `int a = 5;\nint b = 3;\nint sum = a + b; // 8`,
     drills: [
@@ -144,9 +151,8 @@ export const C_CURRICULUM_MAP: Record<CConceptId, CurriculumStep> = {
     title: "6 · Difference (-)",
     shortName: "Difference (-)",
     concept: "Subtracting two numbers in C",
-    initialQuestion: "What is `12 - 4` in C? (Hint: use `-`)",
-    expectedKeywords: ["8", "eight", "diff = 8", "diff is 8"],
-    expectedMathAnswer: 8,
+    initialQuestion: "Now that you saw addition, how would you write the C code to subtract `b` from `a`? (Hint: use `-`)",
+    expectedKeywords: ["a - b", "a-b"],
     teachingExplanation: "In C, the `-` operator subtracts the second number from the first: `int diff = a - b;`.",
     cCodeSnippet: `int a = 12;\nint b = 4;\nint diff = a - b; // 8`,
     drills: [
